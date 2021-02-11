@@ -1,9 +1,15 @@
-import {CssProperties} from "./CssProperties";
-import {FontFaceProperties} from "./FontFaceProperties";
-export type Style= { [media: string]: Partial<CssProperties> | Style }
+import { CssProperties } from './CssProperties';
+import { FontFaceProperties } from './FontFaceProperties';
+import { KeyFrameProperties } from './KeyFrameProperties';
 
-export type JssProperties =  Partial<CssProperties> | Style | {'@font-face'?: Partial<FontFaceProperties>};
+export type MediaStyle = {
+  '@font-face': FontFaceProperties;
+  '@keyframes': KeyFrameProperties;
+  [media: string]: Partial<CssProperties> | MediaStyle;
+};
+
+export type JssProperties = Partial<CssProperties> | MediaStyle;
 
 export type ClassProperty<K extends keyof any> = {
-    [P in K]: JssProperties;
+  [P in K]: JssProperties;
 };

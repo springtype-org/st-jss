@@ -1,7 +1,5 @@
-import {Props, tsx } from "springtype"
-export interface StyleProps extends Props{
-}
+import { Props, tsx } from 'springtype';
 
-export const Style = ({children}: StyleProps)=> {
-    return <style type="text/css">{children}</style>
-}
+export interface StyleProps extends Props {}
+
+export const Style = ({ children }: StyleProps) => <style type="text/css">{children}</style>;

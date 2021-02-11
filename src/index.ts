@@ -1,2 +1,1 @@
-export * from "./jss";
-export * from "./makeStyles";
+export * from './jss';
