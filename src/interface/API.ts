@@ -1,4 +1,4 @@
-import { IVirtualNode } from 'springtype';
+import { IVirtualNode } from 'springtype-types';
 import { ClassProperty, JssProperties } from './ClassProperties';
 import { FontFaceProperties } from './FontFaceProperties';
 import { KeyFrameProperties } from './KeyFrameProperties';

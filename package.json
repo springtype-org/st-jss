@@ -1,6 +1,6 @@
 {
   "name": "st-jss",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publishConfig": {
     "access": "public"
   },
@@ -9,15 +9,15 @@
   "exports": "dist/index.modern.js",
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
-  "homepage": "https://github.com/springtype-org/st-i18n",
+  "homepage": "https://github.com/springtype-org/st-jss",
   "repository": {
-    "url": "git+https://github.com/springtype-org/st-i18n.git",
+    "url": "git+https://github.com/springtype-org/st-jss.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/springtype-org/st-i18n/issues"
+    "url": "https://github.com/springtype-org/st-jss/issues"
   },
-  "description": "Nano library for javascript css (jss)",
+  "description": "Nano library to work with CSS in TS",
   "keywords": [
     "jss",
     "microframework",
@@ -30,6 +30,7 @@
     "build": "microbundle",
     "watch": "microbundle watch",
     "postbuild": "npx st-cp package.json .npmignore README.md LICENSE dist",
+    "e2e": "ts-node ./scripts/run-smoke-e2e-test.ts",
     "test": "jest --verbose --coverage",
     "test:watch": "jest --verbose --watch --coverage",
     "test:ci": "jest --verbose --runInBand",
@@ -46,7 +47,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint:check",
-      "pre-push": "yarn audit --level MODERATE && yarn test",
+      "pre-push": "yarn audit --level MODERATE && yarn test && e2e",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -77,6 +78,6 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "springtype": "^3.2.3"
+    "springtype-types": "^3.2.5"
   }
 }

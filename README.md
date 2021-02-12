@@ -1,23 +1,23 @@
 <h1 align="center">SpringType: st-jss</h1>
 
 <p align="center">
-  Nano library for javascript css (jss)
+  Nano library to work with CSS in TS
 </p>
 
 [![Gitter](https://badges.gitter.im/springtype-official/springtype.svg)](https://gitter.im/springtype-official/springtype?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 <h2 align="center">Purpose</h2>
 
-This is an exremely tiny, yet powerful library for generation css with javascript. `st-jss` does include all special types like _font-face_ and _keyframes_.
+This is an exremely tiny, yet powerful library for generation of CSS in TypeScript. `st-jss` does include all special types like _font-face_, _keyframes_, `@media` queries and `:pseudo-selectors`.
 
 <h2 align="center">Features</h2>
 
-- ✅ Implements a simple, jss like API including string interpolation
+- ✅ Implements a JSS-like API to work with CSS in TS
 - ✅ Comes with namespace support
-- ✅ Tiny: ` bytes` (best, brotli) - ` bytes` (worst, umd, gz)
+- ✅ Tiny: `671 bytes` (best, brotli) - `871 bytes` (worst, umd, gz)
 - ✅ Zero dependencies
 - ✅ First class TypeScript support
-- ✅ 100% Unit Test coverage
+- ✅ 0% Unit Test coverage
 
 <h2 align="center">How to</h2>
 
@@ -103,7 +103,7 @@ Thank you so much for supporting us financially! 🙏🏻😎🥳👍
 
 <h2 align="center">Maintainers</h2>
 
-`st-i18n` is brought to you by:
+`st-jss` is brought to you by:
 
 <table>
   <tbody>
