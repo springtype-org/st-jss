@@ -47,7 +47,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint:check",
-      "pre-push": "yarn audit --level MODERATE && yarn test && e2e",
+      "pre-push": "yarn audit --level MODERATE && yarn test && yarn e2e",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
