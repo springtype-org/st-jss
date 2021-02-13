@@ -1,7 +1,6 @@
 import { IVirtualNode } from 'springtype-types';
 import { ClassProperty } from './interface/ClassProperties';
 import { API } from './interface/API';
-import { Style } from './Style';
 
 const LINEBREAK = '\n';
 
@@ -30,8 +29,10 @@ export const create = <T extends string = string>(
   return [
     classes,
     {
-      type: Style,
-      attributes: {},
+      type: 'style',
+      attributes: {
+        type: 'text/css',
+      },
       children: [css.join(LINEBREAK)],
     },
   ];

@@ -23,7 +23,7 @@ export const render = (style: JssProperties, counterClassName: string, jss: API,
           other.push(...jss.renderFontFace(styleValue));
         } else if (styleName.toLowerCase() === KEY_FRAMES_KEY.toLowerCase()) {
           const animationName = styleValue[ANIMATION_NAME_KEY];
-          styleValue[ANIMATION_NAME_KEY] = undefined;
+          delete styleValue[ANIMATION_NAME_KEY];
           other.push(...jss.renderKeyFrames(animationName, styleValue));
         } else {
           other.push(`${styleName} {`, ...render(styleValue, counterClassName, jss, round + 1), '}');

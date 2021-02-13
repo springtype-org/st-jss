@@ -1,5 +1,4 @@
 import { tsx, render, Props } from 'springtype';
-import { $ } from 'st-query';
 import { jss } from '../../../dist';
 
 export const MyStyledCmp = ({ children }: Props) => {
@@ -31,6 +30,12 @@ export const MyStyledCmp = ({ children }: Props) => {
         '100%': { top: 0, left: 0, background: 'red' },
       },
     },
+    animation: {
+      animationName: 'animationName',
+      animationIterationCount: 'infinite',
+      animationDuration: '4s',
+      paddingTop: 50,
+    },
   });
 
   const onChangeStyleClick = () => {
@@ -41,7 +46,7 @@ export const MyStyledCmp = ({ children }: Props) => {
     <fragment>
       {style}
       <div className={classes.container}>{children}</div>
-
+      <div className={classes.animation} />
       <button type="button" onClick={onChangeStyleClick}>
         Change style
       </button>

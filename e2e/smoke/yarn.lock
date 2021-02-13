@@ -6891,7 +6891,7 @@ springtype-types@^3.2.4:
   resolved "https://registry.yarnpkg.com/springtype-types/-/springtype-types-3.2.5.tgz#9ed9a14b5e0ae8513844ac93c1e073af9008ab42"
   integrity sha512-C8yYIz7WLoaDJk8tB8ib4QPpRJQxCKATSUkKuYwl4NmFgLYhyxAjIpYtqVrRGalQla5L4rd4t/gonsYr+JsU+A==
 
-springtype@^3.2.5:
+springtype@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/springtype/-/springtype-3.2.4.tgz#7b5731c13671b693ff9fcd9a0f1be57dcd8a46b4"
   integrity sha512-KI3nSjKXWu7dOJpzlj6C0OQieagklaRhlMKb8SV4sIfPtYqyLyWLIhiV7BhviPwY0BHNJNvnztYajI8XqBhq7A==
