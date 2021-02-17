@@ -14,7 +14,7 @@ This is an exremely tiny, yet powerful library for generation of CSS in TypeScri
 
 - ✅ Implements a JSS-like API to work with CSS in TS
 - ✅ Comes with namespace support
-- ✅ Tiny: `671 bytes` (best, brotli) - `871 bytes` (worst, umd, gz)
+- ✅ Tiny: `591 bytes` (best, brotli) - `781 bytes` (worst, umd, gz)
 - ✅ Zero dependencies
 - ✅ First class TypeScript support
 - ✅ 0% Unit Test coverage
@@ -84,7 +84,6 @@ The following contract is made between the webapp and `st-jss`:
 export interface API {
   classNamePrefix: string;
   instanceCounter: number;
-  space: string;
   makeFont: (style: FontFaceProperties) => IVirtualNode;
   makeAnimation: (animationName: string, style: KeyFrameProperties) => [string, IVirtualNode];
   makeStyles: <T extends string = string>(classProperty: ClassProperty<T>) => [Record<T, string>, IVirtualNode];

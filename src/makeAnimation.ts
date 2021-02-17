@@ -2,10 +2,10 @@ import { IVirtualNode, KeyFrameProperties } from 'springtype-types';
 import { API } from './interface/API';
 import { getCssAsText } from './function/getCssAsText';
 import { KEY_FRAMES_KEY } from './constant';
-import { createStyleNode } from './create';
 import { joinClassNames } from './function/joinClassNames';
+import { createStyleNode } from './createStyleNode';
 
-export const renderKeyFrames = (
+export const makeAnimation = (
   animationName: string,
   style: Partial<KeyFrameProperties>,
   jss: API,
@@ -19,12 +19,12 @@ export const renderKeyFrames = (
     const styleValue = (style as any)[styleName];
 
     const keyFrame = Object.keys(styleValue);
-    animationLines.push(`${jss.space}${styleName} {`);
+    animationLines.push(`${styleName} {`);
     for (let index = 0; index < keyFrame.length; index++) {
       const name = keyFrame[index];
-      animationLines.push(jss.space + jss.space + getCssAsText(name, styleValue[name]));
+      animationLines.push(getCssAsText(name, styleValue[name]));
     }
-    animationLines.push(`${jss.space}}`);
+    animationLines.push('}');
   }
   animationLines.push('}');
   return [newAnimationName, createStyleNode(animationLines)];

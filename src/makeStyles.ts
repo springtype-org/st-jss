@@ -4,16 +4,9 @@ import { API } from './interface/API';
 import { LINEBREAK } from './constant';
 import { joinClassNames } from './function/joinClassNames';
 import { render } from './render';
+import { createStyleNode } from './createStyleNode';
 
-export const createStyleNode = (styleLines: Array<string>): IVirtualNode => ({
-  type: 'style',
-  attributes: {
-    type: 'text/css',
-  },
-  children: [styleLines.join(LINEBREAK)],
-});
-
-export const create = <T extends string = string>(
+export const makeStyles = <T extends string = string>(
   classProperties: ClassProperty<T>,
   jss: API,
 ): [Record<T, string>, IVirtualNode] => {
@@ -30,6 +23,5 @@ export const create = <T extends string = string>(
     // collect all css parts
     styleLines.push(result.join(LINEBREAK));
   }
-
   return [classes, createStyleNode(styleLines)];
 };
