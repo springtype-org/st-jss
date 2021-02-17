@@ -2,6 +2,14 @@ import { tsx, render, Props } from 'springtype';
 import { jss } from '../../../dist';
 
 export const MyStyledCmp = ({ children }: Props) => {
+  const [animationName, animationStyle] = jss.makeAnimation('myAnimation', {
+    '0%': { top: 0, left: 0, background: 'red' },
+    '25%': { top: 0, left: 100, background: 'blue' },
+    '50%': { top: 100, left: 100, background: 'yellow' },
+    '75%': { top: 100, left: 0, background: 'green' },
+    '100%': { top: 0, left: 0, background: 'red' },
+  });
+
   const [classes, style] = jss.makeStyles({
     container: {
       // Normal jss
@@ -13,28 +21,12 @@ export const MyStyledCmp = ({ children }: Props) => {
           backgroundColor: 'red',
         },
       },
-      // add a font always global
-      '@font-face': {
-        fontFamily: 'Open Sans',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        src: 'url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2")',
-      },
-      // add an animation ensure unique animation name
-      '@keyframes': {
-        animationName: 'animationName',
-        '0%': { top: 0, left: 0, background: 'red' },
-        '25%': { top: 0, left: 100, background: 'blue' },
-        '50%': { top: 100, left: 100, background: 'yellow' },
-        '75%': { top: 100, left: 0, background: 'green' },
-        '100%': { top: 0, left: 0, background: 'red' },
-      },
     },
     animation: {
-      animationName: 'animationName',
+      paddingTop: 50,
+      animationName,
       animationIterationCount: 'infinite',
       animationDuration: '4s',
-      paddingTop: 50,
     },
   });
 
@@ -45,6 +37,7 @@ export const MyStyledCmp = ({ children }: Props) => {
   return (
     <fragment>
       {style}
+      {animationStyle}
       <div className={classes.container}>{children}</div>
       <div className={classes.animation} />
       <button type="button" onClick={onChangeStyleClick}>
@@ -53,4 +46,5 @@ export const MyStyledCmp = ({ children }: Props) => {
     </fragment>
   );
 };
+
 render(<MyStyledCmp />);

@@ -2634,6 +2634,11 @@ cssstyle@^2.2.0:
   dependencies:
     cssom "~0.3.6"
 
+csstype@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.6.tgz#865d0b5833d7d8d40f4e5b8a6d76aea3de4725ef"
+  integrity sha512-+ZAmfyWMT7TiIlzdqJgjMb7S4f1beorDbWbsocyK4RaiqA5RTX3K14bnBWmmA9QEM0gRdsjyyrEmcyga8Zsxmw==
+
 damerau-levenshtein@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/damerau-levenshtein/-/damerau-levenshtein-1.0.6.tgz#143c1641cb3d85c60c32329e26899adea8701791"
@@ -6893,10 +6898,12 @@ split2@^3.0.0:
   dependencies:
     readable-stream "^3.0.0"
 
-springtype-types@^3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/springtype-types/-/springtype-types-3.2.5.tgz#9ed9a14b5e0ae8513844ac93c1e073af9008ab42"
-  integrity sha512-C8yYIz7WLoaDJk8tB8ib4QPpRJQxCKATSUkKuYwl4NmFgLYhyxAjIpYtqVrRGalQla5L4rd4t/gonsYr+JsU+A==
+springtype-types@^3.2.12:
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/springtype-types/-/springtype-types-3.2.12.tgz#d14fc249893984756c45e21d1a25cb98729bf7b6"
+  integrity sha512-ZquF/UFBzbxXIVdj2xNG4sHBmVZ7D2J0PnZ9Sf6p2G8Hl5hCeADYttLcCR3d3TGLSD2SV72UvORmcdmsj2kg/w==
+  dependencies:
+    csstype "^3.0.6"
 
 sprintf-js@~1.0.2:
   version "1.0.3"

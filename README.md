@@ -24,10 +24,17 @@ This is an exremely tiny, yet powerful library for generation of CSS in TypeScri
 This is how using `st-jss` looks like:
 
 ```tsx
-import {Props, tsx} from "springtype";
+import {Props, tsx, render} from "springtype";
 import { jss } from 'st-jss';
 
-export const MyStyledCmp = ({children}: Props) => {
+export const MyStyledCmp = ({ children }: Props) => {
+  const [animationName, animationStyle] = jss.makeAnimation('myAnimation', {
+    '0%': { top: 0, left: 0, background: 'red' },
+    '25%': { top: 0, left: 100, background: 'blue' },
+    '50%': { top: 100, left: 100, background: 'yellow' },
+    '75%': { top: 100, left: 0, background: 'green' },
+    '100%': { top: 0, left: 0, background: 'red' },
+  });
 
   const [classes, style] = jss.makeStyles({
     container: {
@@ -37,35 +44,36 @@ export const MyStyledCmp = ({children}: Props) => {
         paddingTop: 50,
         flex: 1,
         ':hover': {
-          backgroundColor: 'red'
-        }
+          backgroundColor: 'red',
+        },
       },
-      // add a font always global
-      '@font-face': {
-        fontFamily: 'Open Sans',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        src: 'url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2")',
-      },
-      // add an animation ensure unique animation name
-      '@keyframes': {
-        animationName: 'animationName',
-        '0%': {top: 0, left: 0, background: 'red'},
-        '25%': {top: 0, left: 100, background: 'blue'},
-        '50%': {top: 100, left: 100, background: 'yellow'},
-        '75%': {top: 100, left: 0, background: 'green'},
-        '100%': {top: 0, left: 0, background: 'red'},
-      }
+    },
+    animation: {
+      paddingTop: 50,
+      animationName,
+      animationIterationCount: 'infinite',
+      animationDuration: '4s',
     },
   });
 
-  return <fragment>
-    {style}
-    <div className={classes.container}>
-      {children}
-    </div>
-  </fragment>
-}
+  const onChangeStyleClick = () => {
+    console.log('ref?', style);
+  };
+
+  return (
+    <fragment>
+      {style}
+      {animationStyle}
+      <div className={classes.container}>{children}</div>
+      <div className={classes.animation} />
+      <button type="button" onClick={onChangeStyleClick}>
+        Change style
+      </button>
+    </fragment>
+  );
+};
+
+render(<MyStyledCmp />);
 ```
 
 <h2 align="center">API</h2>
@@ -77,10 +85,9 @@ export interface API {
   classNamePrefix: string;
   instanceCounter: number;
   space: string;
-  renderFontFace: (style: FontFaceProperties) => Array<string>;
-  renderKeyFrames: (animationName: string, style: KeyFrameProperties) => Array<string>;
-  render: (style: JssProperties, counterClassName: string, round?: number) => Array<string>;
-  makeStyles: <T extends string = string>(classProperty: ClassProperty<T>) => [ Record<T, string>, IVirtualNode];
+  makeFont: (style: FontFaceProperties) => IVirtualNode;
+  makeAnimation: (animationName: string, style: KeyFrameProperties) => [string, IVirtualNode];
+  makeStyles: <T extends string = string>(classProperty: ClassProperty<T>) => [Record<T, string>, IVirtualNode];
 }
 ```
 

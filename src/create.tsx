@@ -1,39 +1,35 @@
 import { IVirtualNode } from 'springtype-types';
 import { ClassProperty } from './interface/ClassProperties';
 import { API } from './interface/API';
+import { LINEBREAK } from './constant';
+import { joinClassNames } from './function/joinClassNames';
+import { render } from './render';
 
-const LINEBREAK = '\n';
+export const createStyleNode = (styleLines: Array<string>): IVirtualNode => ({
+  type: 'style',
+  attributes: {
+    type: 'text/css',
+  },
+  children: [styleLines.join(LINEBREAK)],
+});
 
 export const create = <T extends string = string>(
   classProperties: ClassProperty<T>,
   jss: API,
 ): [Record<T, string>, IVirtualNode] => {
-  const counter = jss.instanceCounter++;
-
-  const namePrefix = jss.classNamePrefix;
-
-  const css: Array<string> = [];
+  const styleLines: Array<string> = [];
   const classes: any = {};
 
   const classNameKey = Object.keys(classProperties);
   for (let index = 0; index < classNameKey.length; index++) {
     const className = classNameKey[index];
-    const counterClassName = `${namePrefix}-${className}-${counter}`;
+    const counterClassName = joinClassNames([jss.classNamePrefix, className, ++jss.instanceCounter]);
 
     classes[className] = counterClassName;
-    const result = jss.render((classProperties as any)[className], counterClassName);
+    const result = render((classProperties as any)[className], counterClassName, jss);
     // collect all css parts
-    css.push(result.join(LINEBREAK));
+    styleLines.push(result.join(LINEBREAK));
   }
 
-  return [
-    classes,
-    {
-      type: 'style',
-      attributes: {
-        type: 'text/css',
-      },
-      children: [css.join(LINEBREAK)],
-    },
-  ];
+  return [classes, createStyleNode(styleLines)];
 };

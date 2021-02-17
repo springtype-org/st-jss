@@ -1,9 +1,8 @@
 import { JssProperties } from './interface/ClassProperties';
 import { API } from './interface/API';
 import { getCssAsText } from './function/getCssAsText';
-import { ANIMATION_NAME_KEY, FONT_FACE_KEY, KEY_FRAMES_KEY } from './constant';
 
-export const render = (style: JssProperties, counterClassName: string, jss: API, round = 0): Array<string> => {
+export const render = (style: JssProperties, counterClassName: string, jss: API, space: string = ''): Array<string> => {
   let result: Array<string> = [];
   const other: Array<string> = [];
 
@@ -14,28 +13,20 @@ export const render = (style: JssProperties, counterClassName: string, jss: API,
     const styleValue = (style as any)[styleName];
 
     if (typeof styleValue !== 'object') {
-      result.push(getCssAsText(styleName, styleValue));
+      result.push(space + jss.space + getCssAsText(styleName, styleValue));
     }
 
     if (typeof styleValue === 'object') {
       if (styleName.indexOf('@') === 0) {
-        if (styleName.toLowerCase() === FONT_FACE_KEY.toLowerCase()) {
-          other.push(...jss.renderFontFace(styleValue));
-        } else if (styleName.toLowerCase() === KEY_FRAMES_KEY.toLowerCase()) {
-          const animationName = styleValue[ANIMATION_NAME_KEY];
-          delete styleValue[ANIMATION_NAME_KEY];
-          other.push(...jss.renderKeyFrames(animationName, styleValue));
-        } else {
-          other.push(`${styleName} {`, ...render(styleValue, counterClassName, jss, round + 1), '}');
-        }
+        other.push(`${styleName} {`, ...render(styleValue, counterClassName, jss, space + jss.space), '}');
       } else {
-        other.push(...render(styleValue, counterClassName + styleName, jss, round));
+        other.push(...render(styleValue, counterClassName + styleName, jss, space));
       }
     }
   }
 
   if (result.length !== 0) {
-    result = [`.${counterClassName} {`, ...result, '}'];
+    result = [`${space}.${counterClassName} {`, ...result, `${space}}`];
   }
 
   result.push(...other);

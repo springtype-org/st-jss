@@ -1,14 +1,11 @@
-import { IVirtualNode } from 'springtype-types';
-import { ClassProperty, JssProperties } from './ClassProperties';
-import { FontFaceProperties } from './FontFaceProperties';
-import { KeyFrameProperties } from './KeyFrameProperties';
+import { FontFaceProperties, IVirtualNode, KeyFrameProperties } from 'springtype-types';
+import { ClassProperty } from './ClassProperties';
 
 export interface API {
   classNamePrefix: string;
   instanceCounter: number;
   space: string;
-  renderFontFace: (style: FontFaceProperties) => Array<string>;
-  renderKeyFrames: (animationName: string, style: KeyFrameProperties) => Array<string>;
-  render: (style: JssProperties, counterClassName: string, round?: number) => Array<string>;
+  makeFont: (style: FontFaceProperties) => IVirtualNode;
+  makeAnimation: (animationName: string, style: KeyFrameProperties) => [string, IVirtualNode];
   makeStyles: <T extends string = string>(classProperty: ClassProperty<T>) => [Record<T, string>, IVirtualNode];
 }
