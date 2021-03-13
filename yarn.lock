@@ -6898,10 +6898,10 @@ split2@^3.0.0:
   dependencies:
     readable-stream "^3.0.0"
 
-springtype-types@^3.2.12:
-  version "3.2.12"
-  resolved "https://registry.yarnpkg.com/springtype-types/-/springtype-types-3.2.12.tgz#d14fc249893984756c45e21d1a25cb98729bf7b6"
-  integrity sha512-ZquF/UFBzbxXIVdj2xNG4sHBmVZ7D2J0PnZ9Sf6p2G8Hl5hCeADYttLcCR3d3TGLSD2SV72UvORmcdmsj2kg/w==
+springtype-types@^3.2.14:
+  version "3.2.14"
+  resolved "https://registry.yarnpkg.com/springtype-types/-/springtype-types-3.2.14.tgz#2042adcc2821511e03a1a0bac05b133fca2a02ce"
+  integrity sha512-m9ZNQhUltKOiCb7/0REc6iESK2VXPm/delbV9TcVOHgeeqHXgzhDDrizQcQigkI1IqVEdkW1fY6VkgURrI03mw==
   dependencies:
     csstype "^3.0.6"
 

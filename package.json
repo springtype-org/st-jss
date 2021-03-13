@@ -52,7 +52,7 @@
     }
   },
   "dependencies": {
-    "springtype-types": "^3.2.12"
+    "springtype-types": "^3.2.14"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
