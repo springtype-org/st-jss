@@ -22,12 +22,12 @@ exports[`makeStyles check style output 2`] = `
   .st-container-1 span {
     color: black;
     height: 4px;
-    font-size: 20;
+    font-size: 20px;
   }
   .st-container-1.libraryClass {
     color: black;
     height: 4px;
-    font-size: 20;
+    font-size: 20px;
   }
 }
 .st-animation-2 {
