@@ -17,7 +17,7 @@ This is an exremely tiny, yet powerful library for generation of CSS in TypeScri
 - ✅ Tiny: `591 bytes` (best, brotli) - `781 bytes` (worst, umd, gz)
 - ✅ Zero dependencies
 - ✅ First class TypeScript support
-- ✅ 0% Unit Test coverage
+- ✅ 99% Unit Test coverage
 
 <h2 align="center">How to</h2>
 
