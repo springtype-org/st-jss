@@ -27,7 +27,7 @@ export const render = (style: JssProperties, counterClassName: string, jss: API)
           '}',
         );
       } else {
-        const [firstCharacter, ...normalizedName] = styleName;
+        const [firstCharacter, ...normalizedName] = styleName.split('');
         const operator = CSS_OPERATORS.find((op) => op === firstCharacter) || ` ${firstCharacter}`;
         other.push(...render(styleValue, counterClassName + operator + normalizedName.join(''), jss));
       }
