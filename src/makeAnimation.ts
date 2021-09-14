@@ -11,7 +11,7 @@ export const makeAnimation = (
   jss: API,
 ): [string, IVirtualNode] => {
   const newAnimationName = joinClassNames([jss.classNamePrefix, animationName, ++jss.instanceCounter]);
-  const animationLines = [`${KEY_FRAMES_KEY} ${newAnimationName}{`];
+  const animationLines = [`${KEY_FRAMES_KEY} ${newAnimationName} {`];
   const styleKeys = Object.keys(style);
 
   for (let sIndex = 0; sIndex < styleKeys.length; sIndex++) {
@@ -19,12 +19,12 @@ export const makeAnimation = (
     const styleValue = (style as any)[styleName];
 
     const keyFrame = Object.keys(styleValue);
-    animationLines.push(`${styleName} {`);
+    animationLines.push(`${jss.space}${styleName} {`);
     for (let index = 0; index < keyFrame.length; index++) {
       const name = keyFrame[index];
-      animationLines.push(getCssAsText(name, styleValue[name], jss.defaultUnit));
+      animationLines.push(jss.space + jss.space + getCssAsText(name, styleValue[name], jss.defaultUnit));
     }
-    animationLines.push('}');
+    animationLines.push(`${jss.space}}`);
   }
   animationLines.push('}');
   return [newAnimationName, createStyleNode(animationLines)];

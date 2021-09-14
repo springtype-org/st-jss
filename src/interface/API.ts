@@ -2,6 +2,7 @@ import { FontFaceProperties, IVirtualNode, KeyFrameProperties } from 'springtype
 import { ClassProperty } from './ClassProperties';
 
 export interface API {
+  space: string;
   defaultUnit: string;
   classNamePrefix: string;
   instanceCounter: number;

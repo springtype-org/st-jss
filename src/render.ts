@@ -1,6 +1,7 @@
 import { JssProperties } from './interface/ClassProperties';
 import { API } from './interface/API';
 import { getCssAsText } from './function/getCssAsText';
+import { CSS_OPERATORS } from './constant';
 
 export const render = (style: JssProperties, counterClassName: string, jss: API): Array<string> => {
   let result: Array<string> = [];
@@ -9,19 +10,26 @@ export const render = (style: JssProperties, counterClassName: string, jss: API)
   const styleKeys = Object.keys(style);
 
   for (let sIndex = 0; sIndex < styleKeys.length; sIndex++) {
-    // todo look first a space
-    const styleName = styleKeys[sIndex].trim();
+    const styleName = styleKeys[sIndex];
     const styleValue = (style as any)[styleName];
 
     if (typeof styleValue !== 'object') {
-      result.push(getCssAsText(styleName, styleValue, jss.defaultUnit));
+      result.push(jss.space + getCssAsText(styleName.trim(), styleValue, jss.defaultUnit));
     }
 
     if (typeof styleValue === 'object') {
-      if (styleName.indexOf('@') === 0) {
-        other.push(`${styleName} {`, ...render(styleValue, counterClassName, jss), '}');
+      if (styleName.trim().indexOf('@') === 0) {
+        // media query start here
+        other.push(
+          `${styleName.trim()} {`,
+          // add space to media query
+          ...render(styleValue, counterClassName, jss).map((v) => jss.space + v),
+          '}',
+        );
       } else {
-        other.push(...render(styleValue, counterClassName + styleName, jss));
+        const [firstCharacter, ...normalizedName] = styleName;
+        const operator = CSS_OPERATORS.find((op) => op === firstCharacter) || ` ${firstCharacter}`;
+        other.push(...render(styleValue, counterClassName + operator + normalizedName.join(''), jss));
       }
     }
   }

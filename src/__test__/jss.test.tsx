@@ -29,3 +29,51 @@ describe('joinClassNames', () => {
     expect(joinClassNames(['st', 'container', 0])).toEqual('st-container-0');
   });
 });
+
+describe('joinClassNames', () => {
+  it('check style output', () => {
+    const [animationName, animationStyle] = jss.makeAnimation('animation', {
+      '0%': { top: 0, left: 0, background: 'red' },
+      '25%': { top: 0, left: 100, background: 'blue' },
+      '50%': { top: 100, left: 100, background: 'yellow' },
+      '75%': { top: 100, left: 0, background: 'green' },
+      '100%': { top: 0, left: 0, background: 'red' },
+    });
+    const [classes, style] = jss.makeStyles({
+      container: {
+        // Normal jss
+        fontFamily: 'Nonito',
+        '@media (min-device-width: 800px)': {
+          paddingTop: 50,
+          flex: 1,
+          ':hover': {
+            backgroundColor: 'red',
+          },
+          ' span': {
+            color: 'black',
+            height: 4,
+            fontSize: 20,
+          },
+          '.libraryClass': {
+            color: 'black',
+            height: 4,
+            fontSize: 20,
+          },
+        },
+      },
+      animation: {
+        paddingTop: 50,
+        animationName,
+        animationIterationCount: 'infinite',
+        animationDuration: '4s',
+      },
+    });
+    expect(classes).toMatchSnapshot();
+    const { children: childrenOfStyle, ...otherPropsOfStyle } = style;
+    const { children: childrenOfAnimation, ...otherPropsOfAnimation } = animationStyle;
+    expect(childrenOfStyle[0]).toMatchSnapshot();
+    expect(otherPropsOfStyle).toMatchSnapshot();
+    expect(childrenOfAnimation[0]).toMatchSnapshot();
+    expect(otherPropsOfAnimation).toMatchSnapshot();
+  });
+});
