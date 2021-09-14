@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeStyles check style output 1`] = `
+Object {
+  "animation": "st-animation-2",
+  "container": "st-container-1",
+}
+`;
+
+exports[`makeStyles check style output 2`] = `
+".st-container-1 {
+  font-family: Nonito;
+}
+@media (min-device-width: 800px) {
+  .st-container-1 {
+    padding-top: 50px;
+    flex: 1;
+  }
+  .st-container-1:hover {
+    background-color: red;
+  }
+  .st-container-1 span {
+    color: black;
+    height: 4px;
+    font-size: 20;
+  }
+  .st-container-1.libraryClass {
+    color: black;
+    height: 4px;
+    font-size: 20;
+  }
+}
+.st-animation-2 {
+  padding-top: 50px;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+}"
+`;
+
+exports[`makeStyles check style output 3`] = `
+Object {
+  "attributes": Object {
+    "type": "text/css",
+  },
+  "type": "style",
+}
+`;

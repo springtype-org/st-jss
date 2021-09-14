@@ -5,6 +5,7 @@
     "jsxFactory": "tsx",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "downlevelIteration": true,
     "declaration": true
   },
   "exclude": [

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeFont check style output 1`] = `
+Object {
+  "attributes": Object {
+    "type": "text/css",
+  },
+  "children": Array [
+    "@font-face {
+font-family: Nonito
+src: url(https://fonts.com/myfont)
+}",
+  ],
+  "type": "style",
+}
+`;
+
+exports[`makeFont check style output 2`] = `
+"@font-face {
+font-family: Nonito
+src: url(https://fonts.com/myfont)
+}"
+`;
+
+exports[`makeFont check style output 3`] = `
+Object {
+  "attributes": Object {
+    "type": "text/css",
+  },
+  "type": "style",
+}
+`;
