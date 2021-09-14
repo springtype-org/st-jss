@@ -6,6 +6,7 @@ import { makeFont } from './makeFont';
 import { makeAnimation } from './makeAnimation';
 
 export const jss: API = {
+  defaultUnit: 'px',
   classNamePrefix: 'st',
   instanceCounter: 0,
   makeAnimation: (animationName: string, style: Partial<KeyFrameProperties>) =>

@@ -22,7 +22,7 @@ export const makeAnimation = (
     animationLines.push(`${styleName} {`);
     for (let index = 0; index < keyFrame.length; index++) {
       const name = keyFrame[index];
-      animationLines.push(getCssAsText(name, styleValue[name]));
+      animationLines.push(getCssAsText(name, styleValue[name], jss.defaultUnit));
     }
     animationLines.push('}');
   }

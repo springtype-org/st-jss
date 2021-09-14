@@ -9,11 +9,12 @@ export const render = (style: JssProperties, counterClassName: string, jss: API)
   const styleKeys = Object.keys(style);
 
   for (let sIndex = 0; sIndex < styleKeys.length; sIndex++) {
+    // todo look first a space
     const styleName = styleKeys[sIndex].trim();
     const styleValue = (style as any)[styleName];
 
     if (typeof styleValue !== 'object') {
-      result.push(getCssAsText(styleName, styleValue));
+      result.push(getCssAsText(styleName, styleValue, jss.defaultUnit));
     }
 
     if (typeof styleValue === 'object') {

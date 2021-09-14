@@ -1,12 +1,10 @@
 import { camelToKebabCase } from './camelToKebabCase';
+import { cssLengthRawKeys } from '../cssLengthRawKeys';
 
-export const getCssAsText = (key: string, value: any) => {
-  const helperEl: any = document.createElement('div');
-  helperEl.style[key] = value;
-  const documentStyle = helperEl.style.cssText;
-  // dont work with :before content: ""
-  if (documentStyle !== '') {
-    return documentStyle;
+export const getCssAsText = (key: string, value: any, defaultUnit: string) => {
+  const normalizedKey = camelToKebabCase(key);
+  if (typeof value === 'number' && cssLengthRawKeys[normalizedKey]) {
+    return `${normalizedKey}: ${value}${defaultUnit};`;
   }
-  return `${camelToKebabCase(key)}: ${value};`;
+  return `${normalizedKey}: ${value};`;
 };
